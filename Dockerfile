@@ -6,8 +6,8 @@ RUN apk update && apk add /bin/sh
 RUN mkdir -p /opt/app
 ENV PROJECT_HOME /opt/app
 
-COPY target/vprofile.jar $PROJECT_HOME/vprofile.jar
+COPY target/*.war $PROJECT_HOME/vprofile-v2.war
 
 WORKDIR $PROJECT_HOME
 EXPOSE 8080
-CMD ["java" ,"-jar","./vprofile.jar"]
+CMD ["java" ,"-jar","./vprofile-v2.war"]
