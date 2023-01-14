@@ -11,10 +11,10 @@ spec:
       tier: demo
   template:
     metadata:
-    name: vprofile-pod
-    labels:
-      app: vprofile-app
-      tier: demo
+      name: vprofile-pod
+      labels:
+        app: vprofile-app
+        tier: demo
     spec:
       containers:
       - name: vprofile-contianer
