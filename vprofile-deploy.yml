@@ -1,0 +1,66 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: vprofile-pod
+  labels:
+    app: vprofile-app
+    tier: demo
+spec:
+  containers:
+  - name: vprofile-contianer
+    image: oludevops/vprofile
+    
+-----------------------------
+
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: vprofile-replicaset
+  labels:
+    app: vprofile-app
+    tier: demo
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      tier: demo
+  template:
+    metadata:
+    name: vprofile-pod
+    labels:
+      app: vprofile-app
+      tier: demo
+    spec:
+      containers:
+      - name: vprofile-contianer
+        image: oludevops/vprofile
+        
+kubectl create deployment --image=oludevops/vprofile vprofile-deploy --dry-run=client -o yaml
+
+----------------------------------
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vprofile-deploy
+  labels:
+    app: vprofile-app
+    tier: demo
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      tier: demo
+  template:
+    metadata:
+    name: vprofile-pod
+    labels:
+      app: vprofile-app
+      tier: demo
+    spec:
+      containers:
+      - name: vprofile-contianer
+        image: oludevops/vprofile
+
+
+
