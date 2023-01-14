@@ -20,8 +20,7 @@ spec:
       containers:
       - name: vprofile-contianer
         image: oludevops/vprofile
-        ports:
-        - containerPort: 3000
+
 
 
 
