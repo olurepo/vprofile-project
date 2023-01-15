@@ -12,7 +12,8 @@
 #EXPOSE 8080
 #CMD ["java" ,"-jar","./vprofile-v2.war"]
 
-FROM tomcat:8.0.51-jre8-alpine
+#FROM tomcat:8.0.51-jre8-alpine
+FROM openjdk:8-alpine
 RUN rm -rf /usr/local/tomcat/webapps/*
 COPY ./target/*.war /usr/local/tomcat/webapps/vprofile-v2.war
 CMD ["catalina.sh","run"]
